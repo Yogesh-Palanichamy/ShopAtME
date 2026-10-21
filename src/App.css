@@ -1,0 +1,565 @@
+
+/* =========================
+   1. GLOBAL STYLES
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb;
+  color: #222;
+  line-height: 1.5;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+/* =========================
+   2. NAVBAR
+========================= */
+
+.navbar {
+  background: #172554;
+  color: white;
+  padding: 18px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.navbar h1 {
+  margin: 0;
+  font-size: clamp(22px, 2.5vw, 28px);
+}
+
+.navbar span {
+  color: #dbeafe;
+}
+
+.header-cart-button {
+  padding: 11px 16px;
+  border: 1px solid #93c5fd;
+  border-radius: 8px;
+  background: white;
+  color: #172554;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.header-cart-button:hover {
+  background: #dbeafe;
+  transform: translateY(-1px);
+}
+
+/* =========================
+   3. MAIN CONTAINER
+========================= */
+
+.container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 30px 5%;
+}
+
+.container h2 {
+  margin: 0 0 8px;
+  font-size: clamp(22px, 2.5vw, 28px);
+}
+
+.product-count {
+  color: #666;
+  margin: 20px 0 24px;
+  font-size: 14px;
+}
+
+.message {
+  text-align: center;
+  margin: 60px auto;
+  padding: 20px;
+  overflow-wrap: anywhere;
+}
+
+/* =========================
+   4. SEARCH AND SORTING
+========================= */
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.search-input,
+.sort-select {
+  min-height: 44px;
+  padding: 11px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 15px;
+  background: white;
+  color: #222;
+  min-width: 0;
+}
+
+.search-input {
+  flex: 1 1 240px;
+  width: 100%;
+}
+
+.toolbar .sort-select {
+  flex: 0 1 240px;
+  width: auto;
+}
+
+/* =========================
+   5. CATEGORY FILTER
+========================= */
+
+.category-filter {
+  margin: 22px 0;
+}
+
+.category-filter h3,
+.price-filter h3 {
+  margin: 0 0 14px;
+  font-size: 17px;
+}
+
+.category-select {
+  width: 100%;
+  max-width: 350px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+/* =========================
+   6. PRICE FILTER
+========================= */
+
+.price-filter {
+  margin: 24px 0;
+  padding: 20px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.price-radio-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px 20px;
+  margin: 16px 0;
+}
+
+.price-radio-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-size: 20px;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.price-radio-options input[type="radio"] {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.price-radio-options label:hover {
+  color: #2563eb;
+}
+
+.price-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.price-inputs input {
+  width: 180px;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 11px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+}
+
+.price-error {
+  color: #dc2626;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.reset-button {
+  min-height: 42px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 7px;
+  background: #e5e7eb;
+  color: #222;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.reset-button:hover {
+  background: #d1d5db;
+}
+
+/* =========================
+   7. PRODUCT GRID
+========================= */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px #0000000d;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px #00000012;
+}
+
+.product-image {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: contain;
+  padding: 16px;
+  background: white;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex: 1;
+  padding: 16px;
+  min-width: 0;
+}
+
+.product-info h3 {
+  font-size: 16px;
+  line-height: 1.4;
+  min-height: 45px;
+  margin: 0 0 10px;
+  overflow-wrap: anywhere;
+}
+
+.category {
+  color: #64748b;
+  font-size: 13px;
+  text-transform: capitalize;
+  overflow-wrap: anywhere;
+}
+
+.rating {
+  font-size: 14px;
+}
+
+.price {
+  font-size: 21px;
+  font-weight: bold;
+  color: #172554;
+  margin-top: auto;
+}
+
+.cart-button {
+  width: 100%;
+  min-height: 44px;
+  padding: 11px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+.cart-button:hover {
+  background: #1d4ed8;
+}
+
+/* =========================
+   8. PAGINATION
+========================= */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 35px 0;
+}
+
+.pagination button {
+  min-width: 40px;
+  min-height: 40px;
+  padding: 9px 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  background: white;
+  color: #172554;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #dbeafe;
+}
+
+.pagination button.active-page {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.pagination button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* =========================
+   9. TABLETS AND SMALL LAPTOPS
+========================= */
+
+@media (max-width: 1100px) {
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .price-radio-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* =========================
+   10. TABLETS
+========================= */
+
+@media (max-width: 800px) {
+  .navbar {
+    padding: 16px 4%;
+  }
+
+  .container {
+    padding: 24px 4%;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .product-image {
+    height: 190px;
+  }
+
+  .price-radio-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .toolbar .sort-select {
+    flex: 1 1 200px;
+  }
+}
+
+/* =========================
+   11. MOBILE PHONES
+========================= */
+
+@media (max-width: 550px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 10px;
+    padding: 16px 5%;
+  }
+
+  .header-cart-button {
+    width: 100%;
+  }
+
+  .container {
+    padding: 22px 4%;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-input,
+  .toolbar .sort-select,
+  .category-select {
+    width: 100%;
+    max-width: 100%;
+    flex: auto;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .product-image {
+    height: 150px;
+    padding: 10px;
+  }
+
+  .product-info {
+    padding: 11px;
+  }
+
+  .product-info h3 {
+    font-size: 14px;
+    min-height: 40px;
+  }
+
+  .price {
+    font-size: 18px;
+  }
+
+  .cart-button {
+    font-size: 14px;
+    padding: 10px 6px;
+  }
+
+  .price-filter {
+    padding: 15px;
+  }
+
+  .price-radio-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px 10px;
+  }
+
+  .price-radio-options label {
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  .alphabet-buttons {
+    gap: 6px;
+  }
+
+  .alphabet-buttons button {
+    min-width: 32px;
+    min-height: 34px;
+    padding: 6px;
+  }
+
+  .pagination {
+    gap: 5px;
+  }
+
+  .pagination button {
+    min-width: 35px;
+    min-height: 36px;
+    padding: 7px 9px;
+  }
+}
+
+/* =========================
+   12. VERY SMALL PHONES
+========================= */
+
+@media (max-width: 350px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-image {
+    height: 200px;
+  }
+
+  .product-info {
+    padding: 16px;
+  }
+
+  .product-info h3 {
+    font-size: 16px;
+  }
+
+  .price-radio-options {
+    grid-template-columns: 1fr;
+  }
+
+  .pagination button {
+    min-width: 32px;
+    padding: 6px;
+    font-size: 12px;
+  }
+}
+
+/* =========================
+   13. REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
